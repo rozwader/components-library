@@ -1,0 +1,40 @@
+{
+  "name": "components-library",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/rozwader/components-library#readme",
+  "bugs": {
+    "url": "https://github.com/rozwader/components-library/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rozwader/components-library.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "ci": "npm run build && npm run check-format",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "sb": "storybook dev"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "^10.4.2",
+    "@types/react": "^19.2.16",
+    "@types/styled-components": "^5.1.36",
+    "prettier": "^3.8.3",
+    "storybook": "^10.4.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "styled-components": "^6.4.2"
+  }
+}
