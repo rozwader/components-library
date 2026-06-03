@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import { theme } from '../../theme.js';
-import type { ButtonSize, ButtonVariant } from './types.js';
+import type { ButtonContentSide, ButtonSize, ButtonVariant } from './types.js';
 
 const getBackgroundColor = (variant: ButtonVariant) => {
   switch (variant) {
@@ -38,40 +38,62 @@ const setSize = (size: ButtonSize) => {
   switch (size) {
     case 'small':
       return `
-                padding: 6px 18px;
+                padding: 6px 22px;
                 font-size: 11pt;
                 border-radius: 8px;
             `;
     case 'big':
       return `
-                padding: 10px 22px;
+                padding: 10px 27px;
                 font-size: 18pt;
                 border-radius: 10px;
             `;
     default:
       return `
-                padding: 8px 20px;
+                padding: 8px 25px;
                 font-size: 15pt;
                 border-radius: 8px;
             `;
   }
 };
 
+const getContentSide = (side: ButtonContentSide) => {
+  switch (side) {
+    case 'left':
+      return `
+        justify-content: start;
+      `;
+    case 'center':
+      return `
+        justify-content: center;
+      `;
+    case 'right':
+      return `
+        justify-content: right;
+      `;
+  }
+};
+
 export const ButtonComponent = styled.button<{
-  variant: ButtonVariant;
-  size: ButtonSize;
+  $variant: ButtonVariant;
+  $size: ButtonSize;
+  $fullWidth: boolean;
+  $contentSide: ButtonContentSide;
 }>`
+  ${({ $fullWidth }) => $fullWidth && 'width: 100%;'}
   border: none;
-  ${({ size }) => setSize(size)}
+  ${({ $size }) => setSize($size)}
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  ${({ $contentSide }) => getContentSide($contentSide)}
   gap: 8px;
 
-  box-shadow: 0px 4px 0px ${({ variant }) => getShadowColor(variant)};
+  box-shadow: 0px 4px 0px ${({ $variant }) => getShadowColor($variant)};
 
-  color: ${({ variant }) => getFontColor(variant)};
-  background-color: ${({ variant }) => getBackgroundColor(variant)};
+  color: ${({ $variant }) => getFontColor($variant)};
+  background-color: ${({ $variant }) => getBackgroundColor($variant)};
 
   cursor: pointer;
 

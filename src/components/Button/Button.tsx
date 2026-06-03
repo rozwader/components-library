@@ -3,17 +3,26 @@ import type { ButtonProps } from './types.js';
 import { ButtonComponent } from './styles.js';
 
 export const Button = ({
-  content,
-  variant = 'default',
-  size = 'default',
-  icon,
-  iconSide = 'right',
+  $variant = 'default',
+  $size = 'default',
+  $icon,
+  $iconSide = 'right',
+  $fullWidth = false,
+  $contentSide = 'center',
+  children,
+  ...props
 }: ButtonProps) => {
   return (
-    <ButtonComponent size={size} variant={variant}>
-      {icon && iconSide === 'left' && icon}
-      {content}
-      {icon && iconSide === 'right' && icon}
+    <ButtonComponent
+      $size={$size}
+      $contentSide={$contentSide}
+      $fullWidth={$fullWidth}
+      $variant={$variant}
+      {...props}
+    >
+      {$icon && $iconSide === 'left' && $icon}
+      {children}
+      {$icon && $iconSide === 'right' && $icon}
     </ButtonComponent>
   );
 };
