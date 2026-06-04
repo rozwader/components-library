@@ -69,7 +69,7 @@ const getContentSide = (side: ButtonContentSide) => {
       `;
     case 'right':
       return `
-        justify-content: right;
+        justify-content: end;
       `;
   }
 };
