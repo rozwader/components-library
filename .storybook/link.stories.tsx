@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button } from '../src/index';
 import { ThemeProvider } from 'styled-components';
+import { Link } from '../src/index';
 import { theme } from '../src/theme';
+import { GlobalStyles } from '../src/globalStyles';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
-import { GlobalStyles } from '../src/globalStyles.ts';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 
 const meta = {
-  component: Button,
+  component: Link,
   decorators: [
     (Story) => (
       <div style={{ width: '100%' }}>
@@ -18,36 +18,30 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Link>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Default',
-    $variant: 'default',
+    children: 'Link',
+    href: 'https://youtube.com/',
   },
 };
 
-export const Primary: Story = {
+export const Coloured: Story = {
   args: {
-    children: 'Primary',
-    $variant: 'primary',
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    children: 'Secondary',
-    $variant: 'secondary',
+    children: 'Coloured Link',
+    href: 'https://youtube.com/',
+    $color: '#e30505',
   },
 };
 
 export const WithIcon: Story = {
   args: {
     children: 'With Icon',
-    $variant: 'primary',
-    $icon: <ArrowForwardIos style={{ width: '20px', height: '20px' }} />,
+    href: 'https://youtube.com/',
+    $icon: <ArrowForwardIos style={{ height: '15px', width: '15px' }} />,
   },
 };
