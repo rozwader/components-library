@@ -1,6 +1,6 @@
-import type { ComponentPropsWithoutRef, ReactElement } from 'react';
+import type { ComponentPropsWithRef, ReactElement } from 'react';
 
-export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   $variant?: ButtonVariant;
   $size?: ButtonSize;
   $icon?: ReactElement;
