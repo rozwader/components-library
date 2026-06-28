@@ -10,5 +10,6 @@ export const theme = createTheme({
     primaryDimmed: '#5b489a',
     secondary: '#8D86C9',
     secondaryDimmed: '#746ea8',
+    lightGray: '#a0a0a0',
   },
 });
