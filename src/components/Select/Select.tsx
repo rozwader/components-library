@@ -7,6 +7,7 @@ import React, {
   Children,
   cloneElement,
   isValidElement,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -35,10 +36,10 @@ export const Select = ({
     );
   }, [value, children]);
 
-  const handleOptionClick = (optionValue: string) => {
+  const handleOptionClick = useCallback((optionValue: string) => {
     $onChange(optionValue);
     setIsOpen(false);
-  };
+  }, [$onChange]);
 
   const handleUnfocus = (event: PointerEvent) => {
     if (!parentComponentRef.current?.contains(event.target as Node)) {
@@ -47,7 +48,8 @@ export const Select = ({
   };
 
   useEffect(() => {
-    if (parentComponentRef.current === null) return;
+    if (parentComponentRef.current === null || !isOpen) return;
+    
     setTimeout(() => {
       document.addEventListener('click', handleUnfocus);
     }, 0);
@@ -69,7 +71,12 @@ export const Select = ({
         <SelectButtonLabelComponent>{$labelContent}</SelectButtonLabelComponent>
       )}
 
-      <SelectButtonComponent onClick={() => setIsOpen(!isOpen)}>
+      <SelectButtonComponent 
+        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-controls="select-list"
+      >
         {displayValue}
         {isOpen ? (
           <KeyboardArrowUp style={{ marginLeft: '5px' }} />
@@ -78,7 +85,10 @@ export const Select = ({
         )}
       </SelectButtonComponent>
       {isOpen && (
-        <SelectListComponent>
+        <SelectListComponent
+          id="select-list"
+          role="listbox"
+        >
           {Children.map(children, (child) => {
             if (!isValidElement(child)) return child;
 

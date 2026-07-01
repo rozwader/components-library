@@ -17,6 +17,8 @@ export const SelectChild = ({
 
   return (
     <SelectChildWrapper
+      role="option"
+      aria-selected={$CURRENT_VALUE === value}
       onClick={handleClick}
       $isCurrentValue={$CURRENT_VALUE === value}
     >
