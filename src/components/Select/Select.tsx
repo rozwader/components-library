@@ -36,10 +36,13 @@ export const Select = ({
     );
   }, [value, children]);
 
-  const handleOptionClick = useCallback((optionValue: string) => {
-    $onChange(optionValue);
-    setIsOpen(false);
-  }, [$onChange]);
+  const handleOptionClick = useCallback(
+    (optionValue: string) => {
+      $onChange(optionValue);
+      setIsOpen(false);
+    },
+    [$onChange],
+  );
 
   const handleUnfocus = (event: PointerEvent) => {
     if (!parentComponentRef.current?.contains(event.target as Node)) {
@@ -49,7 +52,7 @@ export const Select = ({
 
   useEffect(() => {
     if (parentComponentRef.current === null || !isOpen) return;
-    
+
     setTimeout(() => {
       document.addEventListener('click', handleUnfocus);
     }, 0);
@@ -71,7 +74,7 @@ export const Select = ({
         <SelectButtonLabelComponent>{$labelContent}</SelectButtonLabelComponent>
       )}
 
-      <SelectButtonComponent 
+      <SelectButtonComponent
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -85,10 +88,7 @@ export const Select = ({
         )}
       </SelectButtonComponent>
       {isOpen && (
-        <SelectListComponent
-          id="select-list"
-          role="listbox"
-        >
+        <SelectListComponent id="select-list" role="listbox">
           {Children.map(children, (child) => {
             if (!isValidElement(child)) return child;
 

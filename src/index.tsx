@@ -3,3 +3,4 @@ export { Link } from './components/Link/Link.js';
 export { Input } from './components/Input/Input.js';
 export { Select } from './components/Select/Select.js';
 export { SelectChild } from './components/Select/SelectChild.js';
+export { Checkbox } from './components/Checkbox/Checkbox.js';
