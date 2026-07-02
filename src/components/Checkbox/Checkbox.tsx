@@ -12,12 +12,12 @@ export const Checkbox = ({
   disabled = false,
   name,
   value,
-  onChange,
+  onClick,
 }: CheckboxProps) => {
   const labelId = useId();
 
   const handleClick = () => {
-    onChange(!value);
+    onClick(!value);
   };
 
   return (

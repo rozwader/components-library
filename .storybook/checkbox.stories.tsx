@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     value: false,
-    onChange: () => console.log('1'),
+    onClick: () => console.log('1'),
     children:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sollicitudin sem lectus, vitae convallis urna ultricies at. Sed hendrerit bibendum urna. Praesent arcu sapien, porta blandit neque cursus, scelerisque ullamcorper ligula. Suspendisse malesuada nulla sed turpis tincidunt porttitor non a sapien. Pellentesque vitae risus nec tortor faucibus tincidunt accumsan quis lorem. Phasellus vestibulum purus id lorem bibendum molestie. In tincidunt consequat quam. Donec auctor erat semper diam eleifend aliquam. Fusce egestas sapien tellus, sit amet blandit tellus suscipit vel. Maecenas eu dictum felis. Quisque bibendum nulla tellus, eu tincidunt urna eleifend ut.',
   },

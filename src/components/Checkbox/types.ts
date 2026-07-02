@@ -6,7 +6,7 @@ export interface CheckboxProps {
   disabled?: boolean;
   name?: string;
   value: boolean;
-  onChange: (value: boolean) => void;
+  onClick: (value: boolean) => void;
 }
 
 export type CheckboxSizeVariant = 'small' | 'medium' | 'big';
