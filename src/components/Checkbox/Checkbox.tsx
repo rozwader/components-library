@@ -13,6 +13,7 @@ export const Checkbox = ({
   name,
   value,
   onClick,
+  padding = "8px"
 }: CheckboxProps) => {
   const labelId = useId();
 
@@ -21,7 +22,7 @@ export const Checkbox = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', padding: padding, paddingLeft: 0 }}>
       <CheckboxComponent
         name={name}
         aria-labelledby={labelId}
