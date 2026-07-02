@@ -13,6 +13,9 @@ const meta = {
         <ThemeProvider theme={theme}>
           <GlobalStyles />
           <Story />
+          <span style={{ color: 'red' }}>
+            Outer state handler has to be passed for select to work
+          </span>
         </ThemeProvider>
       </div>
     ),
