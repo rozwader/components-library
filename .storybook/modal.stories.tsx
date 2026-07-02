@@ -1,9 +1,9 @@
-import { ThemeProvider } from "styled-components";
-import { Checkbox, Modal } from "../src";
-import { theme } from "../src/theme";
-import { GlobalStyles } from "../src/globalStyles";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { Checkbox, Modal } from '../src';
+import { theme } from '../src/theme';
+import { GlobalStyles } from '../src/globalStyles';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import React, { useState } from 'react';
 
 const meta = {
   component: Modal,
@@ -24,22 +24,59 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "Title",
-    onSubmit: () => console.log("Submit"),
-    onCancel: () => console.log("Cancel"),
-    close: () => console.log("Closing"),
-    requirementsMet: () => false, 
-    errorMessage: "There was an error!"
+    title: 'Title',
+    onSubmit: () => console.log('Submit'),
+    onCancel: () => console.log('Cancel'),
+    close: () => console.log('Closing'),
   },
   render: (args) => (
     <Modal {...args}>
-        <p style={{margin: 0}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sollicitudin sem lectus, vitae convallis urna ultricies at. Sed hendrerit bibendum urna. Praesent arcu sapien, porta blandit neque cursus, scelerisque ullamcorper ligula.</p>
-        <Checkbox padding="16px 8px 4px 0" value={true} onClick={() => console.log("changed")}>
-            Accept the terms
-        </Checkbox>
-        <Checkbox padding="4px 8px 16px 0" value={true} onClick={() => console.log("changed")}>
-            Accept the terms for marketing info
-        </Checkbox>
+      <p>Message</p>
     </Modal>
-  )
+  ),
+};
+
+export const Example: Story = {
+  args: {
+    title: 'Title',
+    onSubmit: () => console.log('Submit'),
+    onCancel: () => console.log('Cancel'),
+    close: () => console.log('Closing'),
+    requirementsMet: () => false,
+    errorMessage: 'There was an error!',
+    $maxWidth: '20%',
+  },
+  render: (args) => {
+    const [firstBox, setFirstBox] = useState<boolean>(false);
+    const [secondBox, setSecondBox] = useState<boolean>(false);
+
+    const checkRequirements = (): boolean => {
+      return firstBox && secondBox ? true : false;
+    };
+
+    return (
+      <Modal {...args} requirementsMet={checkRequirements}>
+        <p style={{ margin: 0 }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+          sollicitudin sem lectus, vitae convallis urna ultricies at. Sed
+          hendrerit bibendum urna. Praesent arcu sapien, porta blandit neque
+          cursus, scelerisque ullamcorper ligula.
+        </p>
+        <Checkbox
+          padding="16px 8px 4px 0"
+          value={firstBox}
+          onClick={() => setFirstBox(!firstBox)}
+        >
+          Accept the terms
+        </Checkbox>
+        <Checkbox
+          padding="4px 8px 16px 0"
+          value={secondBox}
+          onClick={() => setSecondBox(!secondBox)}
+        >
+          Accept the terms for marketing info
+        </Checkbox>
+      </Modal>
+    );
+  },
 };
