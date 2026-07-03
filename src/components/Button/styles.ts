@@ -8,6 +8,8 @@ const getBackgroundColor = (variant: ButtonVariant) => {
       return theme.colors.dark;
     case 'secondary':
       return theme.colors.primary;
+    case 'danger':
+      return theme.colors.danger;
     default:
       return theme.colors.main;
   }
@@ -17,6 +19,7 @@ const getFontColor = (variant: ButtonVariant) => {
   switch (variant) {
     case 'primary':
     case 'secondary':
+    case 'danger':
       return theme.colors.main;
     default:
       return theme.colors.dark;

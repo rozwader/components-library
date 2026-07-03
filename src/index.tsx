@@ -5,3 +5,6 @@ export { Select } from './components/Select/Select.js';
 export { SelectChild } from './components/Select/SelectChild.js';
 export { Checkbox } from './components/Checkbox/Checkbox.js';
 export { Modal } from './components/Modal/Modal.js';
+export { Toast } from "./components/Toast/Toast.js";
+export { ToastContainer } from "./components/Toast/Toast.js";
+export { useToastManager } from "./components/Toast/ToastManager.js";
