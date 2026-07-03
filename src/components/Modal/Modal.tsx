@@ -20,7 +20,7 @@ export const Modal = ({
   requirementsMet,
   errorMessage,
   mandatory = false,
-  $maxWidth
+  $maxWidth,
 }: ModalProps) => {
   const [error, setError] = useState<boolean>(false);
 
@@ -28,7 +28,7 @@ export const Modal = ({
     if (requirementsMet && event === 'submit') {
       if (requirementsMet() === true) {
         close();
-        event === 'submit' ? onSubmit() : onCancel();
+        onSubmit();
       } else {
         setError(true);
       }

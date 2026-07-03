@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components';
-import { Checkbox, Modal } from '../src';
+import { Button, Checkbox, Modal } from '../src';
 import { theme } from '../src/theme';
 import { GlobalStyles } from '../src/globalStyles';
 import type { Meta, StoryObj } from '@storybook/react-vite';
@@ -49,34 +49,44 @@ export const Example: Story = {
   render: (args) => {
     const [firstBox, setFirstBox] = useState<boolean>(false);
     const [secondBox, setSecondBox] = useState<boolean>(false);
+    const [visible, setVisible] = useState<boolean>(false);
 
     const checkRequirements = (): boolean => {
       return firstBox && secondBox ? true : false;
     };
 
     return (
-      <Modal {...args} requirementsMet={checkRequirements}>
-        <p style={{ margin: 0 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-          sollicitudin sem lectus, vitae convallis urna ultricies at. Sed
-          hendrerit bibendum urna. Praesent arcu sapien, porta blandit neque
-          cursus, scelerisque ullamcorper ligula.
-        </p>
-        <Checkbox
-          padding="16px 8px 4px 0"
-          value={firstBox}
-          onClick={() => setFirstBox(!firstBox)}
-        >
-          Accept the terms
-        </Checkbox>
-        <Checkbox
-          padding="4px 8px 16px 0"
-          value={secondBox}
-          onClick={() => setSecondBox(!secondBox)}
-        >
-          Accept the terms for marketing info
-        </Checkbox>
-      </Modal>
+      <>
+        <Button onClick={() => setVisible(true)}>Open</Button>
+        {visible && (
+          <Modal
+            {...args}
+            close={() => setVisible(false)}
+            requirementsMet={checkRequirements}
+          >
+            <p style={{ margin: 0 }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              sollicitudin sem lectus, vitae convallis urna ultricies at. Sed
+              hendrerit bibendum urna. Praesent arcu sapien, porta blandit neque
+              cursus, scelerisque ullamcorper ligula.
+            </p>
+            <Checkbox
+              padding="16px 8px 4px 0"
+              value={firstBox}
+              onClick={() => setFirstBox(!firstBox)}
+            >
+              Accept the terms
+            </Checkbox>
+            <Checkbox
+              padding="4px 8px 16px 0"
+              value={secondBox}
+              onClick={() => setSecondBox(!secondBox)}
+            >
+              Accept the terms for marketing info
+            </Checkbox>
+          </Modal>
+        )}
+      </>
     );
   },
 };
