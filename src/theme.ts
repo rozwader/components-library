@@ -12,7 +12,7 @@ export const theme = createTheme({
     secondaryDimmed: '#746ea8',
     lightGray: '#a0a0a0',
     danger: '#ff3333',
-    success: "#46bd4e",
-    info: "#41b0ff"
+    success: '#46bd4e',
+    info: '#41b0ff',
   },
 });
